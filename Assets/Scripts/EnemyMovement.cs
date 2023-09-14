@@ -4,49 +4,50 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
-    private float originalX;
-    private float maxOffset = 5.0f;
-    private float enemyPatroltime = 2.0f;
+    // Movement
     private int moveRight = -1;
-
+    private float enemyPatroltime = 2.0f;
     private Vector2 velocity;
-    private Rigidbody2D enemyBody;
-    public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
+    // Position
+    // private float originalX;
+    private float originalLocalX;
+    private float originalLocalY;
+    private float maxOffset = 5.0f;
+    public Vector3 startPosition;
+
+    // Structure
+    private Rigidbody2D enemyBody;
+    
     // Start is called before the first frame update
     void Start()
     {
         enemyBody = GetComponent<Rigidbody2D>();
-        // get the starting position
-        originalX = transform.position.x;
+        // originalX = transform.position.x;   // Get the starting position
+        originalLocalX = transform.localPosition.x;
+        originalLocalY = transform.localPosition.y;   // Get the starting position
+        startPosition = new Vector3(originalLocalX, originalLocalY, 0.0f);
         ComputeVelocity();
     }
+
     void ComputeVelocity()
     {
-        velocity = new Vector2((moveRight) * maxOffset / enemyPatroltime, 0);
+        velocity = new Vector2((moveRight) * maxOffset / enemyPatroltime, 0);   // Velocity = Displacement / Time
     }
+
     void Movegoomba()
     {
-        enemyBody.MovePosition(enemyBody.position + velocity * Time.fixedDeltaTime);
+        enemyBody.MovePosition(enemyBody.position + velocity * Time.fixedDeltaTime);    // We use MovePosition because Goombas are Kinematic type Rigidbody. DO NOT just transform.
     }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log(other.gameObject.name);
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
+        if (Mathf.Abs(enemyBody.position.x - originalLocalX) < maxOffset)
         {
-            // move goomba
-            Movegoomba();
+            Movegoomba();   // Move Goomba
         }
         else
         {
-            // Change Direction
             moveRight *= -1;
             ComputeVelocity();
             Movegoomba();

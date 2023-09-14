@@ -75,6 +75,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # vscode settings
-/.vscode/settings.json
+.vscode/settings.json
 
 # End of https://www.toptal.com/developers/gitignore/api/unity
