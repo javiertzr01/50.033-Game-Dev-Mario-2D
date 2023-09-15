@@ -3213,9 +3213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ff5282a1d855d4e962069fe5f54f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 35
-  maxSpeed: 50
-  upSpeed: 28
+  speed: 55
+  maxSpeed: 65
+  upSpeed: 35
   jumpOverGoomba: {fileID: 952355663}
   scoreText: {fileID: 1182049204}
   GameOverScoreText: {fileID: 631208940}
@@ -3236,7 +3236,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 3
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 9
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
