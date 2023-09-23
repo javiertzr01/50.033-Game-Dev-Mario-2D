@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(1 << collision.transform.gameObject.layer);
         if (((collisionLayerMask & (1 << collision.transform.gameObject.layer)) > 0) && !onGroundState)
         {
             onGroundState = true;
