@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
-        marioSprite = GetComponent<SpriteRenderer>();
+        marioSprite = GetComponentInChildren<SpriteRenderer>();
         GameOverCanvas.SetActive(false);
     }
 
@@ -105,9 +105,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void ResetGame()
     {
-        marioBody.transform.position = new Vector3(-8.26f, -4.4f, 0.0f);    // Reset Mario Position
+        marioBody.transform.position = new Vector3(-8.26f, -4.22f, 0.0f);    // Reset Mario Position
         faceRightState = true;  // Reset Sprite Direction
-        marioSprite.flipX = false;  // Reset SPrite Direction
+        marioSprite.flipX = false;  // Reset Sprite Direction
         scoreText.text = "SCORE: 0";    // Reset Score
         foreach (Transform eachChild in enemies.transform)
         {
