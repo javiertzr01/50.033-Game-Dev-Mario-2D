@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer marioSprite;
     public JumpOverGoomba jumpOverGoomba;
     public Animator marioAnimator;
+    public Transform gameCamera;
 
     // UI
     public TextMeshProUGUI scoreText;
@@ -153,5 +154,7 @@ public class PlayerMovement : MonoBehaviour
 
         marioAnimator.SetTrigger("gameRestart");    // Reset Animation
         alive = true;
+
+        gameCamera.position = new Vector3(0,0,-10);
     }
 }
