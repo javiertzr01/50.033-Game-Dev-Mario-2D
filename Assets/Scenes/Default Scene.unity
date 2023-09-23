@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5801954204863163011, guid: 658cc2013f8060c4fb594ab26207ea74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 5801954204863163011, guid: 658cc2013f8060c4fb594ab26207ea74, type: 3}
       propertyPath: m_LocalPosition.z
@@ -371,7 +371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9050678037357320739, guid: 4306c2424023e7f4aac32a0bdc3eeb65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2
+      value: 3.69
       objectReference: {fileID: 0}
     - target: {fileID: 9050678037357320739, guid: 4306c2424023e7f4aac32a0bdc3eeb65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -842,7 +842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9050678037357320739, guid: 4306c2424023e7f4aac32a0bdc3eeb65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 9050678037357320739, guid: 4306c2424023e7f4aac32a0bdc3eeb65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1365,7 +1365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5801954204863163011, guid: 658cc2013f8060c4fb594ab26207ea74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 5801954204863163011, guid: 658cc2013f8060c4fb594ab26207ea74, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1672,6 +1672,10 @@ PrefabInstance:
     - target: {fileID: 4923071909162057065, guid: 30d0feb97c401c14a80837e6cf37a2a3, type: 3}
       propertyPath: m_Name
       value: Goomba-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923071909162057065, guid: 30d0feb97c401c14a80837e6cf37a2a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2070,6 +2074,10 @@ PrefabInstance:
     - target: {fileID: 4923071909162057065, guid: 30d0feb97c401c14a80837e6cf37a2a3, type: 3}
       propertyPath: m_Name
       value: Goomba-1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923071909162057065, guid: 30d0feb97c401c14a80837e6cf37a2a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3733,7 +3741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9050678037357320739, guid: 4306c2424023e7f4aac32a0bdc3eeb65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 9050678037357320739, guid: 4306c2424023e7f4aac32a0bdc3eeb65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3969,7 +3977,7 @@ Transform:
   m_GameObject: {fileID: 1521825173}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.12, y: -1.9009999, z: 0.111981854}
+  m_LocalPosition: {x: 8.12, y: -1.4109999, z: 0.111981854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4286,7 +4294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 55
   maxSpeed: 65
-  upSpeed: 35
+  upSpeed: 38
   deathImpulse: 60
   jumpOverGoomba: {fileID: 1553907917}
   marioAnimator: {fileID: 952355659}
@@ -4347,6 +4355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goomba-4
       objectReference: {fileID: 0}
+    - target: {fileID: 4923071909162057065, guid: 30d0feb97c401c14a80837e6cf37a2a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4405,7 +4417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1716485213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemies
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -4696,6 +4708,10 @@ PrefabInstance:
     - target: {fileID: 4923071909162057065, guid: 30d0feb97c401c14a80837e6cf37a2a3, type: 3}
       propertyPath: m_Name
       value: Goomba-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923071909162057065, guid: 30d0feb97c401c14a80837e6cf37a2a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5061,7 +5077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5801954204863163011, guid: 658cc2013f8060c4fb594ab26207ea74, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.120000064
+      value: 0.6100001
       objectReference: {fileID: 0}
     - target: {fileID: 5801954204863163011, guid: 658cc2013f8060c4fb594ab26207ea74, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5134,7 +5150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9050678037357320739, guid: 4306c2424023e7f4aac32a0bdc3eeb65, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 9050678037357320739, guid: 4306c2424023e7f4aac32a0bdc3eeb65, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5224,6 +5240,10 @@ PrefabInstance:
     - target: {fileID: 4923071909162057065, guid: 30d0feb97c401c14a80837e6cf37a2a3, type: 3}
       propertyPath: m_Name
       value: Throwaway
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923071909162057065, guid: 30d0feb97c401c14a80837e6cf37a2a3, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

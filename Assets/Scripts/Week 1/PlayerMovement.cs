@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         {
             faceRightState = false;
             marioSprite.flipX = true;
-            if (marioBody.velocity.x > 4.2f)    // If Mario is turning right abruptly
+            if (marioBody.velocity.x > 2.0f)    // If Mario is turning right abruptly
             {
                 marioAnimator.SetTrigger("onSkid"); // Update animator
             }
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             faceRightState = true;
             marioSprite.flipX = false;
-            if (marioBody.velocity.x < -4.2f)   // If Mario is turning left abruptly
+            if (marioBody.velocity.x < -2.0f)   // If Mario is turning left abruptly
             {
                 marioAnimator.SetTrigger("onSkid"); // Update animator
             }
@@ -67,9 +67,11 @@ public class PlayerMovement : MonoBehaviour
         marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));  // Update animator
     }
 
+    int collisionLayerMask = (1 << 3) | (1 << 8);
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") && !onGroundState)
+        if (((collisionLayerMask & (1 << collision.transform.gameObject.layer)) > 0) && !onGroundState)
         {
             onGroundState = true;
             marioAnimator.SetBool("onGround", onGroundState);   // Update animator
