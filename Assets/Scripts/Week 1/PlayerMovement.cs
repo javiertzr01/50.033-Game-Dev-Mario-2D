@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D marioBody;
     private SpriteRenderer marioSprite;
     public JumpOverGoomba jumpOverGoomba;
+    public Animator marioAnimator;
 
     // UI
     public TextMeshProUGUI scoreText;
@@ -32,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
         marioSprite = GetComponentInChildren<SpriteRenderer>();
+        marioAnimator.SetBool("onGround", onGroundState);   // Update animator
         GameOverCanvas.SetActive(false);
     }
 
@@ -43,17 +45,33 @@ public class PlayerMovement : MonoBehaviour
         {
             faceRightState = false;
             marioSprite.flipX = true;
+            if (marioBody.velocity.x > 4.2f)    // If Mario is turning right abruptly
+            {
+                marioAnimator.SetTrigger("onSkid"); // Update animator
+            }
+            Debug.Log(marioBody.velocity.x);
         }
         if ((Input.GetKeyDown("d") || Input.GetKeyDown("right")) && !faceRightState)
         {
             faceRightState = true;
             marioSprite.flipX = false;
+            if (marioBody.velocity.x < -4.2f)   // If Mario is turning left abruptly
+            {
+                marioAnimator.SetTrigger("onSkid"); // Update animator
+            }
+            Debug.Log(marioBody.velocity.x);
         }
+
+        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));  // Update animator
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground")) onGroundState = true;
+        if (collision.gameObject.CompareTag("Ground") && !onGroundState)
+        {
+            onGroundState = true;
+            marioAnimator.SetBool("onGround", onGroundState);   // Update animator
+        } 
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -93,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
         {
             marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);  // Add impulse up
             onGroundState = false;
+            marioAnimator.SetBool("onGround", onGroundState);   //Update animator
         }
     }
 
