@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class AnimationEffects : MonoBehaviour
+public class PlayerAnimationEffects : MonoBehaviour
 {
     public AudioSource marioAudio;
     public AudioClip marioDeath;

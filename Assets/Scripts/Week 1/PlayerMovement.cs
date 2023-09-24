@@ -117,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Play death animation
             marioAnimator.Play("mario-die");
-            marioSprite.GetComponent<AnimationEffects>().PlayDeathSound();
+            marioSprite.GetComponent<PlayerAnimationEffects>().PlayDeathSound();
             alive = false;
         }
     }
