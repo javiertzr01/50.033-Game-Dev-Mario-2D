@@ -71,8 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(1 << collision.transform.gameObject.layer);
-        if (((collisionLayerMask & (1 << collision.transform.gameObject.layer)) > 0) && !onGroundState)
+        if (((collisionLayerMask & (1 << collision.GetContact(0).collider.gameObject.layer)) > 0) && !onGroundState)
         {
             onGroundState = true;
             marioAnimator.SetBool("onGround", onGroundState);   // Update animator
