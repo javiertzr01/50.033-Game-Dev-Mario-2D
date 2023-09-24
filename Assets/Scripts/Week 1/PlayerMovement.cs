@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float deathImpulse = 60;
 
     // Position
-    private bool onGroundState = true;
+    public bool onGroundState = true;
     private bool faceRightState = true;
     [System.NonSerialized]
     public bool alive = true;   // To prevent recollision with Goomba
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public JumpOverGoomba jumpOverGoomba;
     public Animator marioAnimator;
     public Transform gameCamera;
+    // public LayerMask platformLayerMask;
 
     // UI
     public TextMeshProUGUI scoreText;
@@ -65,6 +66,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));  // Update animator
+
+        // RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.down, 1.0f, collisionLayerMask);
+        // if (hit.collider == null)
+        // {
+        //     onGroundState = false;
+        //     marioAnimator.SetBool("onGround", onGroundState);
+        // }
+        fallingCheck();
     }
 
     int collisionLayerMask = (1 << 3) | (1 << 8);
@@ -75,7 +84,17 @@ public class PlayerMovement : MonoBehaviour
         {
             onGroundState = true;
             marioAnimator.SetBool("onGround", onGroundState);   // Update animator
+            marioAnimator.SetBool("falling", false);
         } 
+    }
+
+    private void fallingCheck()
+    {
+        if (!Physics2D.BoxCast(transform.position, new Vector2(0.88f ,1.0f), 0, -transform.up, 0.5f, collisionLayerMask) && onGroundState)
+        {
+            onGroundState = false;
+            marioAnimator.SetBool("falling", true);   // Update animator
+        }
     }
 
     public void GameOverScene()
