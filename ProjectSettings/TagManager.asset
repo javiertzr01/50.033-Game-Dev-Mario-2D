@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - Coin
+  - Question Block
   layers:
   - Default
   - TransparentFX

@@ -20,7 +20,7 @@ public class BrickCoinAnimation : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        coinAnimator.SetTrigger("onHitQB");
+        coinAnimator.SetBool("collected", true);
         brickAnimator.Play("brick-bounce");
         brickAnimator.SetTrigger("bounce");
     }

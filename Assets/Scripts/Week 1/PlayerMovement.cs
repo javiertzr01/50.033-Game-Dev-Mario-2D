@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer marioSprite;
     public JumpOverGoomba jumpOverGoomba;
     public Animator marioAnimator;
+    private GameObject[] questionBlocks;
+    private GameObject[] coins;
     public Transform gameCamera;
     // public LayerMask platformLayerMask;
 
@@ -174,6 +176,24 @@ public class PlayerMovement : MonoBehaviour
         GameOverCanvas.SetActive(false);
 
         marioAnimator.SetTrigger("gameRestart");    // Reset Animation
+
+        coins = GameObject.FindGameObjectsWithTag("Coin");
+        questionBlocks = GameObject.FindGameObjectsWithTag("Question Block");
+        foreach (GameObject qB in questionBlocks)
+        {
+            Rigidbody2D qBBody = qB.GetComponent<Rigidbody2D>();
+            qBBody.bodyType = RigidbodyType2D.Dynamic;
+            Animator qBAnimator = qB.GetComponent<Animator>();
+            qBAnimator.SetTrigger("gameRestart");   // qb animation
+            qBAnimator.SetBool("collected", false);
+        }
+        foreach (GameObject coin in coins)
+        {
+            Animator coinAnimator = coin.GetComponent<Animator>();
+            coinAnimator.SetTrigger("gameRestart");   // coin animation
+            coinAnimator.SetBool("collected", false);
+        }
+
         alive = true;
 
         gameCamera.position = new Vector3(0,0,-10);

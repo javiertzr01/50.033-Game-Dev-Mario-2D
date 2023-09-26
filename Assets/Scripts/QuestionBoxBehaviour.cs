@@ -24,13 +24,18 @@ public class QuestionBoxBehaviour : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collider)
     {
-        coinAnimator.SetTrigger("onHitQB");
+        coinAnimator.SetBool("collected", true);
         qbAnimator.SetBool("collected", true);
     }
 
     void setRigidBodyStatic()
     {
         qbBody.bodyType = RigidbodyType2D.Static;
+    }
+
+    void setRigidBodyDynamic()
+    {
+        qbBody.bodyType = RigidbodyType2D.Dynamic;
     }
 
 }
