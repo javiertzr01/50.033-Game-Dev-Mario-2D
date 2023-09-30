@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed = 65;
     public float upSpeed = 35;
     public float deathImpulse = 60;
+    private bool moving = false;
+    private bool jumpState = false;
 
     // Position
     public bool onGroundState = true;
@@ -44,11 +46,10 @@ public class PlayerMovement : MonoBehaviour
         GameOverCanvas.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FlipMarioSprite(int value)
     {
         // Switching sprite direction
-        if ((Input.GetKeyDown("a") || Input.GetKeyDown("left")) && faceRightState)
+        if (value == -1 && faceRightState)
         {
             faceRightState = false;
             marioSprite.flipX = true;
@@ -57,7 +58,8 @@ public class PlayerMovement : MonoBehaviour
                 marioAnimator.SetTrigger("onSkid"); // Update animator
             }
         }
-        if ((Input.GetKeyDown("d") || Input.GetKeyDown("right")) && !faceRightState)
+
+        else if (value == 1 && !faceRightState)
         {
             faceRightState = true;
             marioSprite.flipX = false;
@@ -66,15 +68,12 @@ public class PlayerMovement : MonoBehaviour
                 marioAnimator.SetTrigger("onSkid"); // Update animator
             }
         }
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
         marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.velocity.x));  // Update animator
-
-        // RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.down, 1.0f, collisionLayerMask);
-        // if (hit.collider == null)
-        // {
-        //     onGroundState = false;
-        //     marioAnimator.SetBool("onGround", onGroundState);
-        // }
         fallingCheck();
     }
 
@@ -124,33 +123,56 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void Move(int value)
+    {
+        Vector2 movement = new Vector2(value, 0);
+        if (marioBody.velocity.magnitude < maxSpeed)
+        {
+            marioBody.AddForce(movement * speed);
+        }
+    }
+
+    public void MoveCheck(int value)
+    {
+        if (value == 0)
+        {
+            moving = false;
+        }
+        else
+        {
+            FlipMarioSprite(value);
+            moving = true;
+            Move(value);
+        }
+    }
+
+    public void Jump()
+    {
+        if (alive && onGroundState)
+        {
+            marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);  // Add impulse up
+            onGroundState = false;
+            jumpState = true;
+            marioAnimator.SetBool("onGround", onGroundState);   // Update animator       
+        }
+    }
+
+    public void JumpHold()
+    {
+        if (alive && jumpState)
+        {
+            marioBody.AddForce(Vector2.up * upSpeed * 30, ForceMode2D.Force);
+            jumpState = false;
+        }
+    }
+
     // FixedUpdate is used for Physics Logic
     void FixedUpdate()
     {
     // Control Mario's Movements
-        if(alive)
+        if(alive && moving)
         {
-            // Horizontal Movement
-            float moveHorizontal = Input.GetAxisRaw("Horizontal");
-            if (Mathf.Abs(moveHorizontal) > 0)  // If there is input
-            {
-                Vector2 movement = new Vector2(moveHorizontal, 0);  // Sets up the vector
-                if (marioBody.velocity.magnitude < maxSpeed)    // Check if Mario's velocity is greater than the max speed
-                {
-                    marioBody.AddForce( movement * speed ); // Move Mario
-                }
-            }
-            else
-            {
-                if (Input.GetKeyUp("a") || Input.GetKeyUp("d") || Input.GetKeyUp("left") || Input.GetKeyUp("right"))    marioBody.velocity = Vector2.zero;  // Stops Mario if key is released
-            }
-            // Vertical Movement
-            if (Input.GetKeyDown("space") && onGroundState)
-            {
-                marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);  // Add impulse up
-                onGroundState = false;
-                marioAnimator.SetBool("onGround", onGroundState);   //Update animator
-            }
+            Move(faceRightState ==  true ? 1 : -1);
         }
     }
 
