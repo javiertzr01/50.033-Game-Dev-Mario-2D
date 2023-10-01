@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinAnimationEffects : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
-    public AudioSource coinAudio;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +16,11 @@ public class CoinAnimationEffects : MonoBehaviour
         
     }
 
-    public void PlayCoinGetSound()
+    public void GameRestart()
     {
-        coinAudio.PlayOneShot(coinAudio.clip);
+        foreach(Transform child in transform)
+        {
+            child.GetComponent<EnemyMovement>().GameRestart();
+        }
     }
 }

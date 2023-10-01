@@ -12,10 +12,7 @@ public class JumpOverGoomba : MonoBehaviour
     // public Transform enemyLocation;
     public GameObject enemies;
 
-    // UI
-    public TextMeshProUGUI scoreText;
-    [System.NonSerialized]
-    public int score = 0;
+    // ScoreState
     private bool countScoreState = false;
 
     // Structures
@@ -23,10 +20,13 @@ public class JumpOverGoomba : MonoBehaviour
     public float maxDistance;
     public LayerMask layerMask;
 
+    // Game Manager
+    public GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -51,9 +51,7 @@ public class JumpOverGoomba : MonoBehaviour
             if (checkJumpOverEnemy())
             {
                 countScoreState = false;
-                score++;
-                scoreText.text = "SCORE: " + score.ToString();
-                Debug.Log(score);
+                gameManager.IncreaseScore(1);
             }
         }
     }

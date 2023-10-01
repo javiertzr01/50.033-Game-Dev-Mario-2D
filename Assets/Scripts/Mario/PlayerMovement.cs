@@ -1,15 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
     // Movement
-    public float speed = 55;
-    public float maxSpeed = 65;
-    public float upSpeed = 35;
+    public float speed;
+    public float maxSpeed;
+    public float upSpeed;
     public float deathImpulse = 60;
     private bool moving = false;
     private bool jumpState = false;
@@ -23,18 +25,8 @@ public class PlayerMovement : MonoBehaviour
     // Structure
     private Rigidbody2D marioBody;
     private SpriteRenderer marioSprite;
-    public JumpOverGoomba jumpOverGoomba;
     public Animator marioAnimator;
-    private GameObject[] questionBlocks;
-    private GameObject[] coins;
     public Transform gameCamera;
-    // public LayerMask platformLayerMask;
-
-    // UI
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI GameOverScoreText;
-    public GameObject GameOverCanvas;
-    public GameObject enemies;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
         marioBody = GetComponent<Rigidbody2D>();
         marioSprite = GetComponentInChildren<SpriteRenderer>();
         marioAnimator.SetBool("onGround", onGroundState);   // Update animator
-        GameOverCanvas.SetActive(false);
     }
 
     void FlipMarioSprite(int value)
@@ -70,6 +61,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void DeathImpulse()
+    {
+        marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -84,9 +80,10 @@ public class PlayerMovement : MonoBehaviour
         if (((collisionLayerMask & (1 << collision.GetContact(0).collider.gameObject.layer)) > 0) && !onGroundState)
         {
             onGroundState = true;
+            jumpState = false;
             marioAnimator.SetBool("onGround", onGroundState);   // Update animator
             marioAnimator.SetBool("falling", false);
-        } 
+        }
     }
 
     private void fallingCheck()
@@ -96,18 +93,6 @@ public class PlayerMovement : MonoBehaviour
             onGroundState = false;
             marioAnimator.SetBool("falling", true);   // Update animator
         }
-    }
-
-    public void GameOverScene()
-    {
-        GameOverScoreText.text = scoreText.text;
-        GameOverCanvas.SetActive(true);
-        Time.timeScale = 0.0f;
-    }
-
-    public void DeathImpulse()
-    {
-        marioBody.AddForce(Vector2.up * deathImpulse, ForceMode2D.Impulse);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -123,12 +108,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // Movement
     void Move(int value)
     {
         Vector2 movement = new Vector2(value, 0);
         if (marioBody.velocity.magnitude < maxSpeed)
         {
             marioBody.AddForce(movement * speed);
+            Debug.Log(marioBody.velocity.magnitude);
         }
     }
 
@@ -153,17 +140,22 @@ public class PlayerMovement : MonoBehaviour
             marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);  // Add impulse up
             onGroundState = false;
             jumpState = true;
-            marioAnimator.SetBool("onGround", onGroundState);   // Update animator       
+            marioAnimator.SetBool("onGround", onGroundState);   // Update animator
         }
     }
 
     public void JumpHold()
     {
-        if (alive && jumpState)
+        if (alive && onGroundState)
         {
-            marioBody.AddForce(Vector2.up * upSpeed * 30, ForceMode2D.Force);
-            jumpState = false;
+            jumpState = true;
         }
+        
+    }
+
+    public void JumpStop()
+    {
+        jumpState = false;
     }
 
     // FixedUpdate is used for Physics Logic
@@ -172,52 +164,22 @@ public class PlayerMovement : MonoBehaviour
     // Control Mario's Movements
         if(alive && moving)
         {
-            Move(faceRightState ==  true ? 1 : -1);
+            Move(faceRightState == true ? 1 : -1);
+        }
+        if (jumpState)
+        {
+            marioBody.AddForce(Vector2.up * upSpeed * 5.1f, ForceMode2D.Force);
         }
     }
 
-    public void RestartButtonCallback(int input)
-    {
-        Debug.Log("Restart");
-        ResetGame();
-        Time.timeScale = 1.0f;
-    }
-
-    public void ResetGame()
+    // GameOver and GameRestarts
+    public void GameRestart()
     {
         marioBody.transform.position = new Vector3(-8.26f, -4.22f, 0.0f);    // Reset Mario Position
         faceRightState = true;  // Reset Sprite Direction
         marioSprite.flipX = false;  // Reset Sprite Direction
-        scoreText.text = "SCORE: 0";    // Reset Score
-        foreach (Transform eachChild in enemies.transform)
-        {
-            eachChild.transform.localPosition = eachChild.GetComponent<EnemyMovement>().startPosition;
-        }
-
-        jumpOverGoomba.score = 0;   // Reset Score
-        GameOverCanvas.SetActive(false);
-
         marioAnimator.SetTrigger("gameRestart");    // Reset Animation
-
-        coins = GameObject.FindGameObjectsWithTag("Coin");
-        questionBlocks = GameObject.FindGameObjectsWithTag("Question Block");
-        foreach (GameObject qB in questionBlocks)
-        {
-            Rigidbody2D qBBody = qB.GetComponent<Rigidbody2D>();
-            qBBody.bodyType = RigidbodyType2D.Dynamic;
-            Animator qBAnimator = qB.GetComponent<Animator>();
-            qBAnimator.SetTrigger("gameRestart");   // qb animation
-            qBAnimator.SetBool("collected", false);
-        }
-        foreach (GameObject coin in coins)
-        {
-            Animator coinAnimator = coin.GetComponent<Animator>();
-            coinAnimator.SetTrigger("gameRestart");   // coin animation
-            coinAnimator.SetBool("collected", false);
-        }
-
         alive = true;
-
-        gameCamera.position = new Vector3(0,0,-10);
+        gameCamera.position = new Vector3(0,0,-10); // Reset Camera Position
     }
 }

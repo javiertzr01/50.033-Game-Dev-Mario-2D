@@ -9,6 +9,7 @@ public class ActionManager : MonoBehaviour
 {
     public UnityEvent jump;
     public UnityEvent jumpHold;
+    public UnityEvent jumpStop;
     public UnityEvent<int> moveCheck;
 
     public void OnJumpHoldAction(InputAction.CallbackContext context)
@@ -16,16 +17,17 @@ public class ActionManager : MonoBehaviour
         if (context.started)
         {
             Debug.Log("JumpHold was started");
+            jumpHold.Invoke();
         }
         else if (context.performed)
         {
             Debug.Log("JumpHold was performed");
-            Debug.Log(context.duration);
-            jumpHold.Invoke();
+            jumpStop.Invoke();
         }
         else if (context.canceled)
         {
             Debug.Log("JumpHold was cancelled");
+            jumpStop.Invoke();
         }
     }
 

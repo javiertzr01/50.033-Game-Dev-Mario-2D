@@ -196,6 +196,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAudio: {fileID: 5135777004924292293}
+  parameter: 0
+  useInt:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: IncreaseScore
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &1399755670183300881
 Animator:
   serializedVersion: 5
@@ -314,7 +330,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3235000420202077891}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 96f25e81d1fb1fd4292df924cbbe98a2, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -337,7 +353,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0010576248, y: -0.23909807}
+  m_Offset: {x: 0.030855179, y: -0.23909807}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -348,7 +364,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0063457, y: 0.52180386}
+  m_Size: {x: 0.5896034, y: 0.52180386}
   m_EdgeRadius: 0
 --- !u!95 &2430887589153928659
 Animator:
@@ -500,7 +516,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 8111295539393738320}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c2fad19f093a83f43b9b857ae6c4788a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
