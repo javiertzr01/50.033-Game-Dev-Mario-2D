@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerAnimationEffects : MonoBehaviour
 {
     public AudioSource marioAudio;
-    public AudioClip marioDeath;
+    public AudioSource marioDeath;
     public GameManager gameManager;
 
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class PlayerAnimationEffects : MonoBehaviour
 
     public void PlayDeathSound()
     {
-        marioAudio.PlayOneShot(marioDeath);
+        marioDeath.PlayOneShot(marioDeath.clip);
     }
 
     void PlayDeathImpulse()
