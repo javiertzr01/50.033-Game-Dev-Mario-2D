@@ -480,6 +480,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Question-Box-Coin-2
       objectReference: {fileID: 0}
+    - target: {fileID: 5909177498970341556, guid: b8435bbef5a9b5a4099b5ed441fca40b, type: 3}
+      propertyPath: useInt.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5909177498970341556, guid: b8435bbef5a9b5a4099b5ed441fca40b, type: 3}
+      propertyPath: useInt.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1287050300}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4970,6 +4978,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Question-Box-Coin-3
       objectReference: {fileID: 0}
+    - target: {fileID: 5909177498970341556, guid: b8435bbef5a9b5a4099b5ed441fca40b, type: 3}
+      propertyPath: useInt.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1287050300}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
