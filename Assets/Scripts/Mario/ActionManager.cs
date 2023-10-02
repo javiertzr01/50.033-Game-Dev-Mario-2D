@@ -16,35 +16,23 @@ public class ActionManager : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("JumpHold was started");
             jumpHold.Invoke();
         }
         else if (context.performed)
         {
-            Debug.Log("JumpHold was performed");
             jumpStop.Invoke();
         }
         else if (context.canceled)
         {
-            Debug.Log("JumpHold was cancelled");
             jumpStop.Invoke();
         }
     }
 
     public void OnJumpAction(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            Debug.Log("Jump started");
-        }
-        else if (context.performed)
+        if (context.performed)
         {
             jump.Invoke();
-            Debug.Log("Jump was performed");
-        }
-        else if (context.canceled)
-        {
-            Debug.Log("Jump was cancelled");
         }
     }
 
@@ -52,41 +40,39 @@ public class ActionManager : MonoBehaviour
     {
         if (context.started)
         {
-            Debug.Log("move started");
             int faceRight = context.ReadValue<float>() > 0 ? 1 : -1;
             moveCheck.Invoke(faceRight);
         }
         if (context.canceled)
         {
-            Debug.Log("move stopped");
             moveCheck.Invoke(0);
         }
     }
 
-    public void OnClickAction(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            Debug.Log("Mouse click started");
-        }
-        else if (context.performed)
-        {
-            Debug.Log("Mouse click performed");
-        }
-        else if (context.canceled)
-        {
-            Debug.Log("Mouse click cancelled");
-        }
-    }
+    // public void OnClickAction(InputAction.CallbackContext context)
+    // {
+    //     if (context.started)
+    //     {
+    //         Debug.Log("Mouse click started");
+    //     }
+    //     else if (context.performed)
+    //     {
+    //         Debug.Log("Mouse click performed");
+    //     }
+    //     else if (context.canceled)
+    //     {
+    //         Debug.Log("Mouse click cancelled");
+    //     }
+    // }
 
-    public void OnPointAction(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            UnityEngine.Vector2 point = context.ReadValue<UnityEngine.Vector2>();
-            Debug.Log($"Point detected: {point}");
-        }
-    }
+    // public void OnPointAction(InputAction.CallbackContext context)
+    // {
+    //     if (context.performed)
+    //     {
+    //         UnityEngine.Vector2 point = context.ReadValue<UnityEngine.Vector2>();
+    //         Debug.Log($"Point detected: {point}");
+    //     }
+    // }
     // Start is called before the first frame update
     void Start()
     {

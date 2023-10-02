@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent gameRestart;
     public UnityEvent<int> scoreChange;
     public UnityEvent gameOver;
+    public UnityEvent<string> goombaDie;
 
     private int score = 0;
 
@@ -48,5 +49,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         gameOver.Invoke();
+    }
+
+    public void StompGoomba(string name)
+    {
+        goombaDie.Invoke(name);
+        IncreaseScore(1);
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UIElements;
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer marioSprite;
     public Animator marioAnimator;
     public Transform gameCamera;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -97,11 +99,16 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && alive) 
+        if ((((1 << 9) & (1 << collision.gameObject.layer)) > 0) && alive)
         {
-            Debug.Log("Collided with goomba!");
-
+            Debug.Log("Goomba Die");
+            gameManager.StompGoomba(collision.GetComponentInParent<Rigidbody2D>().gameObject.name);
+            marioBody.AddForce(Vector2.up * upSpeed * 2, ForceMode2D.Impulse);
+        }
+        else if (collision.gameObject.CompareTag("Enemy") && alive) 
+        {
             // Play death animation
+            Debug.Log("Mario Die");
             marioAnimator.Play("mario-die");
             alive = false;
         }
@@ -114,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         if (marioBody.velocity.magnitude < maxSpeed)
         {
             marioBody.AddForce(movement * speed);
-            Debug.Log(marioBody.velocity.magnitude);
+            // Debug.Log(marioBody.velocity.magnitude);
         }
     }
 

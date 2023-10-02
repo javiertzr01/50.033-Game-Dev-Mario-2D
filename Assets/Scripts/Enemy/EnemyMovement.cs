@@ -18,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
 
     // Structure
     private Rigidbody2D enemyBody;
+    public Animator goombaAnimator;
     
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,12 @@ public class EnemyMovement : MonoBehaviour
     {
         enemyBody.MovePosition(enemyBody.position + velocity * Time.fixedDeltaTime);    // We use MovePosition because Goombas are Kinematic type Rigidbody. DO NOT just transform.
     }
+
+    public void Die()
+    {
+        GetComponent<EdgeCollider2D>().enabled = false;
+        goombaAnimator.SetBool("onStomped", true);
+    }
     // Update is called once per frame
     void Update()
     {
@@ -55,6 +62,9 @@ public class EnemyMovement : MonoBehaviour
 
     public void GameRestart()
     {
+        goombaAnimator.SetTrigger("gameRestart");
+        goombaAnimator.SetBool("onStomped", false);
+        GetComponent<EdgeCollider2D>().enabled = true;
         transform.localPosition = startPosition;
         moveRight = -1;
         ComputeVelocity();

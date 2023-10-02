@@ -24,7 +24,6 @@ public class QuestionBoxBehaviour : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collider)
     {
-        Debug.Log(collider.gameObject.name);
         coinAnimator.SetBool("collected", true);
         qbAnimator.SetBool("collected", true);
     }

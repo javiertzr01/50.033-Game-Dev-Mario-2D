@@ -23,4 +23,9 @@ public class EnemyManager : MonoBehaviour
             child.GetComponent<EnemyMovement>().GameRestart();
         }
     }
+
+    public void GoombaDie(string name)
+    {
+        transform.Find(name).GetComponent<EnemyMovement>().Die();
+    }
 }
