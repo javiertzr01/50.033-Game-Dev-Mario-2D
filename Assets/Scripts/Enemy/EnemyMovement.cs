@@ -10,7 +10,6 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 velocity;
 
     // Position
-    // private float originalX;
     private float originalLocalX;
     private float originalLocalY;
     private float maxOffset = 5.0f;
@@ -19,10 +18,12 @@ public class EnemyMovement : MonoBehaviour
     // Structure
     private Rigidbody2D enemyBody;
     public Animator goombaAnimator;
+    private AudioSource goombaAudio;
     
     // Start is called before the first frame update
     void Start()
     {
+        goombaAudio = GetComponent<AudioSource>();
         enemyBody = GetComponent<Rigidbody2D>();
         originalLocalX = transform.localPosition.x;
         originalLocalY = transform.localPosition.y;   // Get the starting position
@@ -48,6 +49,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void Die()
     {
+        goombaAudio.PlayOneShot(goombaAudio.clip);
         GetComponent<EdgeCollider2D>().enabled = false;
         goombaAnimator.SetBool("onStomped", true);
         moveRight = 0;

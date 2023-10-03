@@ -100,6 +100,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-2914850556199451129
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: b42707416addee243a2ccf7590717391
+  m_EffectName: Attenuation
+  m_MixLevel: e14e647c15b246645a32c00e64c7d3e1
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-2846339524873709354
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -196,6 +210,24 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &-289612011236519038
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: f4abd071812db5144b0c8305c9e5a7cb
+  m_EffectName: Lowpass
+  m_MixLevel: 73f53c3082068a1449d7bd185c84d8b0
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 48baadeab4634254a9382475505de36f
+  - m_ParameterName: Resonance
+    m_GUID: 33f016b52ede90048b541080b64d7de1
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -224,6 +256,7 @@ AudioMixerController:
     - 72c50fa0055a21e4ea6edf3f650dd359
     - ed04a9049df17684090b8c13dac9cb73
     - 388e947858dafad41bc736996f5b53de
+    - 7a44f101381f5cb4ab1cf0c3d9595ad8
     name: All
   - guids:
     - 6865a33c9c2885b408182098b7c5d02e
@@ -286,6 +319,8 @@ AudioMixerSnapshotController:
     4c4d7375bfdcbeb47b93e2d4392d6cb8: 2000
     969bd957909a4b3469fa9cda8e8d1cab: 0.1
     8095790850c56364e9fdeaee06752d65: 0
+    c68d3cf9cae0e1542b1568336b9711bd: 3000
+    48baadeab4634254a9382475505de36f: 1000
     2182393bd26593a46b3d29d2cbc254ef: -10
     b897d6bd1dd0cd549a3b170a33c55751: 5.8
   m_TransitionOverrides: {}
@@ -350,6 +385,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 3383823834191163419}
   - {fileID: -4804133089773958698}
+  - {fileID: 3951706831421663179}
   - {fileID: -4646749456165883188}
   m_Volume: 2166c44f61f0c50488d623cc5ce91d15
   m_Pitch: 4871b0984942adf4088d2d2ee825ed7f
@@ -413,6 +449,26 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: -370229446544218400}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &3951706831421663179
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Enemy Dies
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 7a44f101381f5cb4ab1cf0c3d9595ad8
+  m_Children: []
+  m_Volume: 514165c207a891e4abfa9d4e7b2d97f5
+  m_Pitch: 9bac7504dff9db649a0acb65c7ddb457
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -2914850556199451129}
+  - {fileID: -289612011236519038}
+  m_UserColorIndex: 1
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!245 &4569730519011245292
 AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
