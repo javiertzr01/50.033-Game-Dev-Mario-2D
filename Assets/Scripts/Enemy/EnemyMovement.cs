@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     // Movement
-    private int moveRight = -1;
+    public int moveRight = -1;
     private float enemyPatroltime = 2.0f;
     private Vector2 velocity;
 
@@ -32,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
 
     void ComputeVelocity()
     {
-        velocity = new Vector2((moveRight) * maxOffset / enemyPatroltime, 0);   // Velocity = Displacement / Time
+        velocity = new Vector2(moveRight * maxOffset / enemyPatroltime, 0);   // Velocity = Displacement / Time
     }
 
     void Movegoomba()
@@ -57,6 +57,17 @@ public class EnemyMovement : MonoBehaviour
             moveRight *= -1;
             ComputeVelocity();
             Movegoomba();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (((1 << 7) & (1 << collider.gameObject.layer)) > 0)
+        {
+            Debug.Log(collider.gameObject.name);
+            moveRight *= -1;
+            Debug.Log(moveRight);
+            ComputeVelocity();
         }
     }
 
