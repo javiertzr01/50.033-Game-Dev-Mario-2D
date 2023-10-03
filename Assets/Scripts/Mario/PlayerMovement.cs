@@ -101,14 +101,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((((1 << 9) & (1 << collision.gameObject.layer)) > 0) && alive)
         {
-            Debug.Log("Goomba Die");
-            gameManager.StompGoomba(collision.GetComponentInParent<Rigidbody2D>().gameObject.name);
+            // Debug.Log("Goomba Die");
+            gameManager.StompGoomba(collision.transform.parent.parent.name);
             marioBody.AddForce(Vector2.up * upSpeed * 2, ForceMode2D.Impulse);
         }
         else if (collision.gameObject.CompareTag("Enemy") && alive) 
         {
             // Play death animation
-            Debug.Log("Mario Die");
+            // Debug.Log("Mario Die");
             marioAnimator.Play("mario-die");
             alive = false;
         }

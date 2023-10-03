@@ -30,6 +30,12 @@ public class EnemyMovement : MonoBehaviour
         ComputeVelocity();
     }
 
+    void ChangeDirection()
+    {
+        moveRight *= -1;
+        ComputeVelocity();
+    }
+
     void ComputeVelocity()
     {
         velocity = new Vector2(moveRight * maxOffset / enemyPatroltime, 0);   // Velocity = Displacement / Time
@@ -44,7 +50,10 @@ public class EnemyMovement : MonoBehaviour
     {
         GetComponent<EdgeCollider2D>().enabled = false;
         goombaAnimator.SetBool("onStomped", true);
+        moveRight = 0;
+        ComputeVelocity();
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -54,8 +63,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            moveRight *= -1;
-            ComputeVelocity();
+            ChangeDirection();
             Movegoomba();
         }
     }
@@ -64,10 +72,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (((1 << 7) & (1 << collider.gameObject.layer)) > 0)
         {
-            Debug.Log(collider.gameObject.name);
-            moveRight *= -1;
-            Debug.Log(moveRight);
-            ComputeVelocity();
+            ChangeDirection();
         }
     }
 
