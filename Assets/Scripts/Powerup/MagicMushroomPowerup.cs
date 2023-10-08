@@ -37,6 +37,8 @@ public class MagicMushroomPowerup : BasePowerup
     {
         base.SpawnPowerup();
         PlaySpawnAnimation();
+        this.GetComponent<BoxCollider2D>().enabled = true;
+        rigidBody.bodyType = RigidbodyType2D.Dynamic;
     }
 
     public void MovePowerup()
