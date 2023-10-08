@@ -1,23 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameConstants gameConstants;
+
     // Movement
-    public float speed;
-    public float maxSpeed;
-    public float upSpeed;
-    public float deathImpulse = 60;
+    float speed;
+    float maxSpeed;
+    float upSpeed;
+    float deathImpulse;
     private bool moving = false;
     private bool jumpState = false;
 
     // Position
+    public Vector3 spawnLocation;
+    public Vector3 cameraSpawnLocation;
     public bool onGroundState = true;
     private bool faceRightState = true;
     [System.NonSerialized]
@@ -28,15 +29,28 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer marioSprite;
     public Animator marioAnimator;
     public Transform gameCamera;
-    public GameManager gameManager;
+
+    void Awake()
+    {
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        // Set up Movement
+        speed = gameConstants.speed;
+        maxSpeed = gameConstants.maxSpeed;
+        upSpeed = gameConstants.upSpeed;
+        deathImpulse = gameConstants.deathImpulse;
+        spawnLocation = gameConstants.spawnLocations[int.Parse(SceneManager.GetActiveScene().name.Substring(SceneManager.GetActiveScene().name.Length-1)) - 1];
+
         Application.targetFrameRate = 30;
         marioBody = GetComponent<Rigidbody2D>();
         marioSprite = GetComponentInChildren<SpriteRenderer>();
         marioAnimator.SetBool("onGround", onGroundState);   // Update animator
+
+
     }
 
     void FlipMarioSprite(int value)
@@ -101,14 +115,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if ((((1 << 9) & (1 << collision.gameObject.layer)) > 0) && alive)
         {
-            // Debug.Log("Goomba Die");
-            gameManager.StompGoomba(collision.transform.parent.parent.name);
+            GameManager.instance.StompGoomba(collision.transform.parent.parent.name);
             marioBody.AddForce(Vector2.up * upSpeed * 2, ForceMode2D.Impulse);
         }
         else if (collision.gameObject.CompareTag("Enemy") && alive) 
         {
             // Play death animation
-            // Debug.Log("Mario Die");
             marioAnimator.Play("mario-die");
             alive = false;
         }
@@ -121,7 +133,6 @@ public class PlayerMovement : MonoBehaviour
         if (marioBody.velocity.magnitude < maxSpeed)
         {
             marioBody.AddForce(movement * speed);
-            // Debug.Log(marioBody.velocity.magnitude);
         }
     }
 
@@ -181,11 +192,11 @@ public class PlayerMovement : MonoBehaviour
     // GameOver and GameRestarts
     public void GameRestart()
     {
-        marioBody.transform.position = new Vector3(-8.26f, -4.22f, 0.0f);    // Reset Mario Position
+        marioBody.transform.position = spawnLocation;    // Reset Mario Position
         faceRightState = true;  // Reset Sprite Direction
         marioSprite.flipX = false;  // Reset Sprite Direction
         marioAnimator.SetTrigger("gameRestart");    // Reset Animation
         alive = true;
-        gameCamera.position = new Vector3(0,0,-10); // Reset Camera Position
+        gameCamera.position = cameraSpawnLocation; // Reset Camera Position
     }
 }

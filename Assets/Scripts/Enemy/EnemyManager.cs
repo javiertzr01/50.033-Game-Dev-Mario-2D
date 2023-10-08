@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    void Awake()
+    {
+        GameManager.instance.gameRestart.AddListener(GameRestart);
+        GameManager.instance.goombaDie.AddListener(GoombaDie);
+    }
+
     // Start is called before the first frame update
     void Start()
     {

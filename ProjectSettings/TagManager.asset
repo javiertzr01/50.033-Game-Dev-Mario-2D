@@ -19,8 +19,8 @@ TagManager:
   - Obstacles
   - Roof
   - Stomp
-  - 
-  - 
+  - Interactive
+  - Powerup
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Castle
+    uniqueID: 2806609481
     locked: 0

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public UnityEvent gameStart;
     public UnityEvent gameRestart;
@@ -11,13 +13,15 @@ public class GameManager : MonoBehaviour
     public UnityEvent gameOver;
     public UnityEvent<string> goombaDie;
 
-    private int score = 0;
+    public IntVariable gameScore;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameScore.value = 0;
         gameStart.Invoke();
         Time.timeScale = 1.0f;
+        SceneManager.activeSceneChanged += SceneSetup;
     }
 
     // Update is called once per frame
@@ -28,16 +32,16 @@ public class GameManager : MonoBehaviour
 
     public void GameRestart()
     {
-        score = 0;
-        SetScore(score);
+        gameScore.value = 0;
+        SetScore(gameScore.value);
         gameRestart.Invoke();
         Time.timeScale = 1.0f;
     }
 
     public void IncreaseScore(int increment)
     {
-        score += increment;
-        SetScore(score);
+        gameScore.ApplyChange(increment);
+        SetScore(gameScore.value);
     }
 
     public void SetScore(int score)
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0.0f;
+        gameScore.SetValue(gameScore.value);
         gameOver.Invoke();
     }
 
@@ -55,5 +60,11 @@ public class GameManager : MonoBehaviour
     {
         goombaDie.Invoke(name);
         IncreaseScore(1);
+    }
+
+    public void SceneSetup(Scene current, Scene next)
+    {
+        gameStart.Invoke();
+        SetScore(gameScore.value);
     }
 }

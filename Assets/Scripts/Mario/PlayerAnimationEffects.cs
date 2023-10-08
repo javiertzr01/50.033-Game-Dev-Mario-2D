@@ -7,7 +7,6 @@ public class PlayerAnimationEffects : MonoBehaviour
 {
     public AudioSource marioAudio;
     public AudioSource marioDeath;
-    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +37,6 @@ public class PlayerAnimationEffects : MonoBehaviour
 
     void PlayGameOverScene()
     {
-        gameManager.GameOver();
+        GameManager.instance.GameOver();
     }
 }

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2602329513965158010}
   - component: {fileID: 344785827063211588}
   - component: {fileID: 5135777004924292293}
-  - component: {fileID: 8920936930327007972}
   - component: {fileID: 1399755670183300881}
+  - component: {fileID: 3471786320656218914}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -96,7 +96,7 @@ AudioSource:
   m_GameObject: {fileID: 2230651291787376257}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2846339524873709354, guid: 489bbe79c027e1c4abacb08235d3bd1b, type: 2}
   m_audioClip: {fileID: 8300000, guid: d885ffc842af744d89f7d595ffcc176a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -183,35 +183,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8920936930327007972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2230651291787376257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7cf3546f930ce84da599ca1296c3c7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinAudio: {fileID: 5135777004924292293}
-  parameter: 0
-  useInt:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: IncreaseScore
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!95 &1399755670183300881
 Animator:
   serializedVersion: 5
@@ -233,6 +204,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3471786320656218914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2230651291787376257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 763e103bad6d63b4ca77e387bfdeb9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  spawned: 0
 --- !u!1 &3235000420202077891
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +230,7 @@ GameObject:
   - component: {fileID: 3497163538672168737}
   - component: {fileID: 4957212814471734087}
   - component: {fileID: 2430887589153928659}
-  - component: {fileID: 1173636072069537439}
+  - component: {fileID: 7340395113238164305}
   m_Layer: 7
   m_Name: Brick_Sprite
   m_TagString: Untagged
@@ -387,7 +372,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1173636072069537439
+--- !u!114 &7340395113238164305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -396,10 +381,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3235000420202077891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d565327e70f56424987c36d2870388a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 43ed993f9969ee140b73acc0510f1a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinAnimator: {fileID: 1399755670183300881}
 --- !u!1 &6002582225883812204
 GameObject:
   m_ObjectHideFlags: 0

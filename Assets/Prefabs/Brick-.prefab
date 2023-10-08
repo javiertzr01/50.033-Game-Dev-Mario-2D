@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6628473901429460552}
   - component: {fileID: 7206319694833256880}
   - component: {fileID: 6859360374328153739}
-  - component: {fileID: 7619780528806256395}
+  - component: {fileID: 4875185413365718098}
   m_Layer: 7
   m_Name: Brick_Sprite
   m_TagString: Untagged
@@ -347,7 +347,7 @@ PrefabInstance:
       addedObject: {fileID: 6859360374328153739}
     - targetCorrespondingSourceObject: {fileID: 2863092106006789183, guid: 658cc2013f8060c4fb594ab26207ea74, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7619780528806256395}
+      addedObject: {fileID: 4875185413365718098}
   m_SourcePrefab: {fileID: 100100000, guid: 658cc2013f8060c4fb594ab26207ea74, type: 3}
 --- !u!95 &6859360374328153739
 Animator:
@@ -370,7 +370,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7619780528806256395
+--- !u!114 &4875185413365718098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -379,6 +379,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1354474017028840766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c5873590ed4d4c4bb568aa5cfc400b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 43ed993f9969ee140b73acc0510f1a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
