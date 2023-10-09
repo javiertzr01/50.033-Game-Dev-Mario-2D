@@ -62,6 +62,7 @@ public class HUDManager : MonoBehaviour
         restartButton.transform.localPosition = restartButtonPosition[1];
         // highscoreText.SetActive(true);      // Show Highscore Text
         highscoreText.GetComponent<TextMeshProUGUI>().text = "TOP- " + gameScore.previousHighestValue.ToString("D6");
-        
+        AudioSource gameOverMusic = GameObject.Find("Game Over Canvas").GetComponent<AudioSource>();
+        gameOverMusic.PlayOneShot(gameOverMusic.clip);
     }
 }

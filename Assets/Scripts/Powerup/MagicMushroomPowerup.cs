@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class MagicMushroomPowerup : BasePowerup
 {
     // Start is called before the first frame update
     private Vector3 ogPos;
+    private AudioSource mushroomAudio;
     protected override void Start()
     {
         base.Start(); // Call base class Start()
         this.type = PowerupType.MagicMushroom;
         ogPos = transform.position;
+        mushroomAudio = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -36,6 +39,7 @@ public class MagicMushroomPowerup : BasePowerup
     public override void SpawnPowerup()
     {
         base.SpawnPowerup();
+        mushroomAudio.PlayOneShot(mushroomAudio.clip);
         PlaySpawnAnimation();
         this.GetComponent<BoxCollider2D>().enabled = true;
     }
