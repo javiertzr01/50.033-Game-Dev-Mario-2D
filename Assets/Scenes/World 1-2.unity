@@ -721,7 +721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8126095821535258013, guid: 5591c49c6b789764aa8680afd8682ef9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.111981854
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8126095821535258013, guid: 5591c49c6b789764aa8680afd8682ef9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4592,6 +4592,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   gameScore: {fileID: 11400000, guid: 532a3c02cc3869d4ab55131968320182, type: 2}
+  levelStartingScore: 0
 --- !u!4 &1810860963
 Transform:
   m_ObjectHideFlags: 0

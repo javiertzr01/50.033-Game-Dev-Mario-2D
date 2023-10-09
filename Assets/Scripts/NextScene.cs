@@ -10,8 +10,8 @@ public class NextScene : MonoBehaviour
     {
         if (collider2D.tag == "Player")
         {
-            Debug.Log("Change Scene!");
             SceneManager.LoadSceneAsync(nextSceneName, LoadSceneMode.Single);
+            GameManager.instance.setLevelStartingScore();
         }
     }
 }

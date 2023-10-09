@@ -1,20 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.Requests;
 using UnityEngine;
-using UnityEngine.Animations;
 
-public class MagicMushroomPowerup : BasePowerup
+public class Star : BasePowerup
 {
     // Start is called before the first frame update
     private Vector3 ogPos;
-    private AudioSource mushroomAudio;
+    private AudioSource starAudio;
     protected override void Start()
     {
         base.Start(); // Call base class Start()
-        this.type = PowerupType.MagicMushroom;
+        this.type = PowerupType.StarMan;
         ogPos = transform.position;
-        mushroomAudio = GetComponent<AudioSource>();
+        starAudio = GetComponent<AudioSource>();
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -39,7 +37,7 @@ public class MagicMushroomPowerup : BasePowerup
     public override void SpawnPowerup()
     {
         base.SpawnPowerup();
-        mushroomAudio.PlayOneShot(mushroomAudio.clip);
+        starAudio.PlayOneShot(starAudio.clip);
         PlaySpawnAnimation();
         this.GetComponent<BoxCollider2D>().enabled = true;
     }
@@ -52,7 +50,7 @@ public class MagicMushroomPowerup : BasePowerup
 
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        Debug.Log("MagicMushroom implementation required");
+        Debug.Log("Starman implementation required");
     }
 
     public override void GameRestart()

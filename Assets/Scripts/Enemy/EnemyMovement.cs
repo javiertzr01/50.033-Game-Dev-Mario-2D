@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public GameConstants gameConstants;
+
     // Movement
     public int moveRight = -1;
     private float enemyPatroltime = 2.0f;
     private Vector2 velocity;
 
     // Position
-    private float originalLocalX;
-    private float originalLocalY;
     private float maxOffset = 5.0f;
     public Vector3 startPosition;
 
@@ -25,10 +26,16 @@ public class EnemyMovement : MonoBehaviour
     {
         goombaAudio = GetComponent<AudioSource>();
         enemyBody = GetComponent<Rigidbody2D>();
-        originalLocalX = transform.localPosition.x;
-        originalLocalY = transform.localPosition.y;   // Get the starting position
-        startPosition = new Vector3(originalLocalX, originalLocalY, 0.0f);
+        startPosition = retrieveStartPosition();
+        transform.localPosition = startPosition;
         ComputeVelocity();
+    }
+
+    Vector3 retrieveStartPosition()
+    {
+        string goombaName = transform.gameObject.name;
+        int goombaIndex = int.Parse(goombaName.Substring(goombaName.Length-1));
+        return gameConstants.goombaSpawnLocations[SceneManager.GetActiveScene().name][goombaIndex - 1];
     }
 
     void ChangeDirection()
@@ -59,7 +66,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(enemyBody.position.x - originalLocalX) < maxOffset)
+        if (Mathf.Abs(enemyBody.position.x - startPosition.x) < maxOffset)
         {
             Movegoomba();   // Move Goomba
         }

@@ -14,11 +14,13 @@ public class GameManager : Singleton<GameManager>
     public UnityEvent<string> goombaDie;
 
     public IntVariable gameScore;
+    public int levelStartingScore;
 
     // Start is called before the first frame update
     void Start()
     {
         gameScore.value = 0;
+        setLevelStartingScore();
         gameStart.Invoke();
         Time.timeScale = 1.0f;
         SceneManager.activeSceneChanged += SceneSetup;
@@ -30,9 +32,14 @@ public class GameManager : Singleton<GameManager>
         
     }
 
+    public void setLevelStartingScore()
+    {
+        levelStartingScore = gameScore.value;
+    }
+
     public void GameRestart()
     {
-        gameScore.value = 0;
+        gameScore.value = levelStartingScore;
         SetScore(gameScore.value);
         gameRestart.Invoke();
         Time.timeScale = 1.0f;
