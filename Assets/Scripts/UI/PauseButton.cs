@@ -29,10 +29,12 @@ public class PauseButton : MonoBehaviour, IInteractiveButton
         if (isPaused)
         {
             image.sprite = playIcon;
+            GetComponentInParent<AudioSource>().Pause();
         }
         else
         {
             image.sprite = pauseIcon;
+            GetComponentInParent<AudioSource>().UnPause();
         }
     }
 }

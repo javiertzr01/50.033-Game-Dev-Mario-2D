@@ -38,11 +38,11 @@ public class MagicMushroomPowerup : BasePowerup
         base.SpawnPowerup();
         PlaySpawnAnimation();
         this.GetComponent<BoxCollider2D>().enabled = true;
-        rigidBody.bodyType = RigidbodyType2D.Dynamic;
     }
 
     public void MovePowerup()
     {
+        rigidBody.bodyType = RigidbodyType2D.Dynamic;
         rigidBody.AddForce(Vector2.right * 3, ForceMode2D.Impulse);
     }
 
@@ -67,7 +67,9 @@ public class MagicMushroomPowerup : BasePowerup
     {
         this.gameObject.SetActive(true);
         this.gameObject.transform.position = ogPos;
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        rigidBody.bodyType = RigidbodyType2D.Static;
         this.gameObject.GetComponentInChildren<Animator>().SetTrigger("gameRestart");
-        rigidBody.velocity = new Vector2(0.0f, 0.0f);
+        // rigidBody.velocity = new Vector2(0.0f, 0.0f);
     }
 }
