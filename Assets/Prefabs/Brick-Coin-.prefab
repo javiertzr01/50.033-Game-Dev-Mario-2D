@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 344785827063211588}
   - component: {fileID: 5135777004924292293}
   - component: {fileID: 1399755670183300881}
-  - component: {fileID: 3471786320656218914}
+  - component: {fileID: 5530134538072416047}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -204,7 +204,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3471786320656218914
+--- !u!114 &5530134538072416047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,11 +213,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 2230651291787376257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 763e103bad6d63b4ca77e387bfdeb9bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 85bde223c94222e4bb8cd4066fcea4ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
   spawned: 0
+  incrementScore:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: e3d65a53c9eaf4b40aa0b78af0455fae, type: 2}
+        m_TargetAssemblyTypeName: GameEvent`1[[System.Int32, mscorlib
+        m_MethodName: Raise
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3235000420202077891
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +245,7 @@ GameObject:
   - component: {fileID: 3497163538672168737}
   - component: {fileID: 4957212814471734087}
   - component: {fileID: 2430887589153928659}
-  - component: {fileID: 7340395113238164305}
+  - component: {fileID: 7688719368469787422}
   m_Layer: 7
   m_Name: Brick_Sprite
   m_TagString: Untagged
@@ -372,7 +387,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7340395113238164305
+--- !u!114 &7688719368469787422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,7 +396,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3235000420202077891}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43ed993f9969ee140b73acc0510f1a11, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d11a8b6d4aaad64f998d474237323ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6002582225883812204

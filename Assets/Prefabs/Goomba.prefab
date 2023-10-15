@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8126095821535258013}
-  - component: {fileID: 6123187342938421483}
   - component: {fileID: 3415815265860966533}
   - component: {fileID: 6395025801642743183}
   - component: {fileID: 9066837795229266093}
+  - component: {fileID: 1967615496834129759}
+  - component: {fileID: 4945897841923559957}
   m_Layer: 6
   m_Name: Goomba
   m_TagString: Enemy
@@ -36,22 +37,6 @@ Transform:
   - {fileID: 7429918153241168039}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6123187342938421483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3188476334088564641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15295045e846a7c4298afe64f6644319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameConstants: {fileID: 11400000, guid: 5d463b2e83159eb46890f8e9689ce9e9, type: 2}
-  moveRight: -1
-  startPosition: {x: 0, y: 0, z: 0}
-  goombaAnimator: {fileID: 165010428326048578}
 --- !u!50 &3415815265860966533
 Rigidbody2D:
   serializedVersion: 4
@@ -218,6 +203,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1967615496834129759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3188476334088564641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6104ad2d915ad1745aff3ee2be7fb6f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: 5d463b2e83159eb46890f8e9689ce9e9, type: 2}
+  moveRight: -1
+  goombaAnimator: {fileID: 165010428326048578}
+--- !u!114 &4945897841923559957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3188476334088564641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdadab42dad412b428eda67710c76b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 159162ec5629add41b11c5667e191e7d, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1967615496834129759}
+        m_TargetAssemblyTypeName: EnemyMovementWeek5, Assembly-CSharp
+        m_MethodName: GameRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3629646599070818939
 GameObject:
   m_ObjectHideFlags: 0

@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 6963762353980450856}
   - component: {fileID: 5731662884163561011}
   - component: {fileID: 7054710899479212172}
-  - component: {fileID: 9207725996715845130}
   m_Layer: 7
   m_Name: Question-Block
   m_TagString: Question Block
@@ -276,18 +275,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &9207725996715845130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4437532261170481542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 582eb8e8c8aab33439cf570e7781d394, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8203848792528329307
 GameObject:
   m_ObjectHideFlags: 0
