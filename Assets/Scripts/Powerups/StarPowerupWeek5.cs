@@ -10,7 +10,7 @@ public class StarPowerupWeek5 : BasePowerupWeek5
     protected override void Start()
     {
         base.Start(); // Call base class Start()
-        this.type = PowerupType.StarMan;
+        type = PowerupType.StarMan;
         ogPos = transform.position;
         starAudio = GetComponent<AudioSource>();
     }
@@ -20,6 +20,7 @@ public class StarPowerupWeek5 : BasePowerupWeek5
         if (col.gameObject.CompareTag("Player") && spawned)
         {
             // TODO: Do something when colliding with player
+            PowerupCollected(this);
             // Then destroy powerup
             DestroyPowerup();
         }
@@ -39,7 +40,7 @@ public class StarPowerupWeek5 : BasePowerupWeek5
         base.SpawnPowerup();
         starAudio.PlayOneShot(starAudio.clip);
         PlaySpawnAnimation();
-        this.GetComponent<BoxCollider2D>().enabled = true;
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 
     public void MovePowerup()
@@ -62,15 +63,15 @@ public class StarPowerupWeek5 : BasePowerupWeek5
     // Helper Functions
     void PlaySpawnAnimation()
     {
-        this.gameObject.GetComponentInChildren<Animator>().SetTrigger("spawned");
+        gameObject.GetComponentInChildren<Animator>().SetTrigger("spawned");
     }
 
     void Reset()
     {
-        this.gameObject.SetActive(true);
-        this.gameObject.transform.position = ogPos;
-        this.GetComponent<BoxCollider2D>().enabled = false;
+        // gameObject.SetActive(true);
+        transform.position = ogPos;
+        GetComponent<BoxCollider2D>().enabled = false;
         rigidBody.bodyType = RigidbodyType2D.Static;
-        this.gameObject.GetComponentInChildren<Animator>().SetTrigger("gameRestart");
+        gameObject.GetComponentInChildren<Animator>().SetTrigger("gameRestart");
     }
 }

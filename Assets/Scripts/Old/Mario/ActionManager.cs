@@ -11,6 +11,7 @@ public class ActionManager : MonoBehaviour
     public UnityEvent jumpHold;
     public UnityEvent jumpStop;
     public UnityEvent<int> moveCheck;
+    public UnityEvent fire;
 
     public void OnJumpHoldAction(InputAction.CallbackContext context)
     {
@@ -46,6 +47,14 @@ public class ActionManager : MonoBehaviour
         if (context.canceled)
         {
             moveCheck.Invoke(0);
+        }
+    }
+
+    public void onFire(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            fire.Invoke();
         }
     }
 

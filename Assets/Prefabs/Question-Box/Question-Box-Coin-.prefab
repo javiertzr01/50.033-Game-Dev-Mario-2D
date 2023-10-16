@@ -601,6 +601,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   spawned: 0
+  powerupAffectsX:
+    m_PersistentCalls:
+      m_Calls: []
   incrementScore:
     m_PersistentCalls:
       m_Calls:

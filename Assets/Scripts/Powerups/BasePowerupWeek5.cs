@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class BasePowerupWeek5 : MonoBehaviour, IPowerup
 {
@@ -9,6 +10,7 @@ public abstract class BasePowerupWeek5 : MonoBehaviour, IPowerup
     protected bool consumed = false;
     protected bool goRight = true;
     protected Rigidbody2D rigidBody;
+    public UnityEvent<IPowerup> powerupAffectsX;
 
     // base methods
 
@@ -35,9 +37,15 @@ public abstract class BasePowerupWeek5 : MonoBehaviour, IPowerup
         }
     }
 
+    public void PowerupCollected(IPowerup i)
+    {
+        powerupAffectsX.Invoke(i);
+    }
+
     public void DestroyPowerup()
     {
-        this.gameObject.SetActive(false);
+        // this.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     // 2. abstract methods, must be implemented by derived classes

@@ -10,14 +10,14 @@ public class QuestionBoxPowerupControllerWeek5 : MonoBehaviour, IPowerupControll
 
     void Start()
     {
-        powerup = transform.parent.parent.GetComponentInChildren<BasePowerupWeek5>();
         qbBody = this.GetComponent<Rigidbody2D>();
         qbAnimator = this.GetComponent<Animator>();
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Player" && !powerup.hasSpawned)
+        powerup = transform.parent.parent.GetComponentInChildren<BasePowerupWeek5>();
+        if (other.gameObject.tag == "Player" && powerup != null && !powerup.hasSpawned)
         // if (other.gameObject.tag == "Player")
         {
             qbAnimator.SetBool("collected", true);    // QuestionBox animation

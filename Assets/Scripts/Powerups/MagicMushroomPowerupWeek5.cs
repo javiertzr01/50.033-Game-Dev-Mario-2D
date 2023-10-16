@@ -12,7 +12,7 @@ public class MagicMushroomPowerupWeek5 : BasePowerupWeek5
     protected override void Start()
     {
         base.Start(); // Call base class Start()
-        this.type = PowerupType.MagicMushroom;
+        type = PowerupType.MagicMushroom;
         ogPos = transform.position;
         mushroomAudio = GetComponent<AudioSource>();
     }
@@ -22,6 +22,7 @@ public class MagicMushroomPowerupWeek5 : BasePowerupWeek5
         if (col.gameObject.CompareTag("Player") && spawned)
         {
             // TODO: Do something when colliding with player
+            PowerupCollected(this);
             // Then destroy powerup
             DestroyPowerup();
         }
@@ -41,7 +42,7 @@ public class MagicMushroomPowerupWeek5 : BasePowerupWeek5
         base.SpawnPowerup();
         mushroomAudio.PlayOneShot(mushroomAudio.clip);
         PlaySpawnAnimation();
-        this.GetComponent<BoxCollider2D>().enabled = true;
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 
     public void MovePowerup()
@@ -52,7 +53,14 @@ public class MagicMushroomPowerupWeek5 : BasePowerupWeek5
 
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        Debug.Log("MagicMushroom implementation required");
+        // base.ApplyPowerup(i);
+        MarioStateController mario;
+        bool result = i.TryGetComponent<MarioStateController>(out mario);
+        if (result)
+        {
+            mario.SetPowerup(powerupType);
+        }
+
     }
 
     public override void GameRestart()
@@ -64,15 +72,14 @@ public class MagicMushroomPowerupWeek5 : BasePowerupWeek5
     // Helper Functions
     void PlaySpawnAnimation()
     {
-        this.gameObject.GetComponentInChildren<Animator>().SetTrigger("spawned");
+        gameObject.GetComponentInChildren<Animator>().SetTrigger("spawned");
     }
 
     void Reset()
     {
-        this.gameObject.SetActive(true);
-        this.gameObject.transform.position = ogPos;
-        this.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.transform.position = ogPos;
+        GetComponent<BoxCollider2D>().enabled = false;
         rigidBody.bodyType = RigidbodyType2D.Static;
-        this.gameObject.GetComponentInChildren<Animator>().SetTrigger("gameRestart");
+        gameObject.GetComponentInChildren<Animator>().SetTrigger("gameRestart");
     }
 }

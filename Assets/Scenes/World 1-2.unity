@@ -1762,6 +1762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: 5d463b2e83159eb46890f8e9689ce9e9, type: 2}
+  faceRightState: {fileID: 11400000, guid: 3a4d3d3e39185e84ca8339123c901567, type: 2}
   incrementScore:
     m_PersistentCalls:
       m_Calls:

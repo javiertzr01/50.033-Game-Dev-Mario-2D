@@ -19,6 +19,7 @@ public class GameConstants : ScriptableObject
         new Vector3 (-8.26f, -4.22f, 0),
         new Vector3 (-6.37f, -2.4f, 0)
     };
+    public float flickerInterval;
 
     // Goomba
     public Dictionary<string, Vector3[]> goombaSpawnLocations = new Dictionary<string, Vector3[]> 
