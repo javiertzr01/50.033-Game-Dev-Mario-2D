@@ -50,9 +50,9 @@ public class ActionManager : MonoBehaviour
         }
     }
 
-    public void onFire(InputAction.CallbackContext context)
+    public void OnFireAction(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.performed)
         {
             fire.Invoke();
         }

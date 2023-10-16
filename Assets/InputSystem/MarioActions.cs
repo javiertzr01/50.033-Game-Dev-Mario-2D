@@ -79,7 +79,7 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -218,10 +218,10 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6cdfbac5-2f52-463a-927e-bba9602e05bc"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""SuperMarioBros"",
+                    ""groups"": """",
                     ""action"": ""fire"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -236,7 +236,7 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
             ""devices"": [
                 {
                     ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": true,
+                    ""isOptional"": false,
                     ""isOR"": false
                 },
                 {

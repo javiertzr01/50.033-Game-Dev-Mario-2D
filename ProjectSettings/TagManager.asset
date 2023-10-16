@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Coin
   - Question Block
+  - Projectile
   layers:
   - Default
   - TransparentFX

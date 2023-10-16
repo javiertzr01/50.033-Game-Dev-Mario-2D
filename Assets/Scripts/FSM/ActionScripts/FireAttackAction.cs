@@ -7,7 +7,7 @@ using UnityEngine;
 public class FireAttackAction : Action
 {
     public int maxPrefabInScene = 3;
-    public float impulseForce = 1;
+    public float impulseForce = 10;
     public float degree = 45;
     public GameObject attackPrefab;
     public BoolVariable marioFaceRight; // A scriptable object updated by PlayerMovement / PlayerController to store current Mario's facing
@@ -18,7 +18,8 @@ public class FireAttackAction : Action
         if (instantiatedPrefabsInScene.Length < maxPrefabInScene)
         {
             // Instantiate it where controller (Mario) is
-            GameObject x = Instantiate(attackPrefab, controller.transform.position, Quaternion.identity);
+            Debug.Log(controller.transform.parent.name);
+            GameObject x = Instantiate(attackPrefab, controller.transform.parent.transform.position, Quaternion.identity);
 
             // Get the Rigidbody of the instantiated object
             Rigidbody2D rb = x.GetComponent<Rigidbody2D>();
