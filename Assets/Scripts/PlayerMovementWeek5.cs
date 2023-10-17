@@ -9,6 +9,7 @@ public class PlayerMovementWeek5 : MonoBehaviour
 {
     public GameConstants gameConstants;
     public BoolVariable faceRightState;
+    public BoolVariable isInvincible;
     public UnityEvent incrementScore;
     public UnityEvent takeDamage;
 
@@ -43,6 +44,7 @@ public class PlayerMovementWeek5 : MonoBehaviour
         upSpeed = gameConstants.upSpeed;
         deathImpulse = gameConstants.deathImpulse;
         faceRightState.value = true;
+        isInvincible.value = false;
         spawnLocation = gameConstants.spawnLocations[int.Parse(SceneManager.GetActiveScene().name.Substring(SceneManager.GetActiveScene().name.Length-1)) - 1];
 
         Application.targetFrameRate = 30;
@@ -157,7 +159,8 @@ public class PlayerMovementWeek5 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((((1 << 9) & (1 << collision.gameObject.layer)) > 0) && alive)
+        // if ((((1 << 9) & (1 << collision.gameObject.layer)) > 0) && alive)
+        if ((collision.gameObject.layer == 9 || isInvincible.value) && alive)
         {
             // GameManager.instance.StompGoomba(collision.transform.parent.parent.name);
             collision.transform.parent.parent.GetComponent<EnemyMovementWeek5>().Die();

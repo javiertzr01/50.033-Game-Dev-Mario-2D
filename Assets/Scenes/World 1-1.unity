@@ -940,6 +940,11 @@ Transform:
   - {fileID: 1072601710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &465755633 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+  m_PrefabInstance: {fileID: 1280093011}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &465882241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,6 +2181,7 @@ GameObject:
   - component: {fileID: 952355661}
   - component: {fileID: 952355662}
   - component: {fileID: 952355663}
+  - component: {fileID: 952355664}
   m_Layer: 0
   m_Name: Mario_Sprite
   m_TagString: Untagged
@@ -2445,6 +2451,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &952355664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952355656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ba77a93a78f9c42b7a4a8498a435ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startState: {fileID: 11400000, guid: 9090fba35ef5176428ab6c60f63a5217, type: 2}
+  previousState: {fileID: 0}
+  currentState: {fileID: 0}
+  remainState: {fileID: 11400000, guid: 9175174b4856f954e9c71e6a69d496e7, type: 2}
+  transitionStateChanged: 0
+  stateTimeElapsed: 0
+  currentPowerupType: -1
+  nextState: -1
 --- !u!1 &958323362
 GameObject:
   m_ObjectHideFlags: 0
@@ -3112,6 +3138,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1280093011
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1634675668}
+    m_Modifications:
+    - target: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619558137055958921, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845645574383753318, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
+      propertyPath: m_Name
+      value: Question-Box-Star
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 067bd2233dfd4d245968238cd257a025, type: 3}
 --- !u!1 &1287050299
 GameObject:
   m_ObjectHideFlags: 0
@@ -4156,6 +4239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: 5d463b2e83159eb46890f8e9689ce9e9, type: 2}
   faceRightState: {fileID: 11400000, guid: 3a4d3d3e39185e84ca8339123c901567, type: 2}
+  isInvincible: {fileID: 11400000, guid: 7acaa7bf0a5fed940b28837db1f0f476, type: 2}
   incrementScore:
     m_PersistentCalls:
       m_Calls:
@@ -4273,6 +4357,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 465755633}
   - {fileID: 7130935724616147661}
   - {fileID: 6843169197367630599}
   - {fileID: 1418369560}

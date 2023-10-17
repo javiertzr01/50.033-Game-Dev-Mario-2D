@@ -51,7 +51,13 @@ public class StarPowerupWeek5 : BasePowerupWeek5
 
     public override void ApplyPowerup(MonoBehaviour i)
     {
-        Debug.Log("Starman implementation required");
+        // try
+        BuffStateController buff;
+        bool result = i.TryGetComponent<BuffStateController>(out buff);
+        if (result)
+        {
+            buff.SetPowerup(powerupType);
+        }
     }
 
     public override void GameRestart()

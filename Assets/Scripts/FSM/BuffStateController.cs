@@ -14,6 +14,11 @@ public class BuffStateController : StateController
         GameRestart();
     }
     
+    public void SetPowerup(PowerupType i)
+    {
+        currentPowerupType = i;
+    }
+
     public void GameRestart()
     {
         currentPowerupType = PowerupType.Default;   // Clear Powerup
