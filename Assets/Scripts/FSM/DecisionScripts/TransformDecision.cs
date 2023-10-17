@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PluggableSM/Decisions/Transform")]
 public class TransformDecision : Decision
 {
+    [System.Serializable]
+    public struct StateTransformMap
+    {
+        public MarioState fromState;
+        public PowerupType powerupCollected;
+    }
 
     public StateTransformMap[] map;
 
@@ -24,12 +30,5 @@ public class TransformDecision : Decision
 
         return false;
 
-    }
-
-    [System.Serializable]
-    public struct StateTransformMap
-    {
-        public MarioState fromState;
-        public PowerupType powerupCollected;
-    }
+    }    
 }

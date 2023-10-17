@@ -22,10 +22,8 @@ public class MarioStateController : StateController, IPowerupApplicable
         i.ApplyPowerup(this);
     }
 
-
     public void Fire()
     {
-        Debug.Log("This");
         this.currentState.DoEventTriggeredActions(this, ActionType.Attack);
     }
 

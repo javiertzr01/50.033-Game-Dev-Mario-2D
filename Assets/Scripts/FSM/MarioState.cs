@@ -7,3 +7,9 @@ public enum MarioState
     InvincibleSmallMario = 3,
     DeadMario = 99
 }
+
+public enum BuffState
+{
+    Default = -1,
+    Invincible = 0
+}
