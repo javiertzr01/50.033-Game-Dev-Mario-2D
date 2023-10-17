@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SetupSmallMario
   m_EditorClassIdentifier: 
   animatorController: {fileID: 9100000, guid: 6b91b6ec2da3e2f4484d861a8fc33739, type: 2}
+  animationAudio: {fileID: 0}

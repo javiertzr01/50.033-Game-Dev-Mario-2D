@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c920a1c15ad2c54cb8b139ec0cefefb, type: 3}
-  m_Name: Buff_Invincible
+  m_Name: Default
   m_EditorClassIdentifier: 
-  setupActions: []
+  setupActions:
+  - {fileID: 11400000, guid: c0d0608c91d21ab44a952f035943bdce, type: 2}
   actions: []
   eventTriggeredActions: []
   exitActions: []
   transitions:
-  - decision: {fileID: 11400000, guid: a9e3d4cc567d82648a0440bd7b39ce86, type: 2}
-    trueState: {fileID: 11400000, guid: 9090fba35ef5176428ab6c60f63a5217, type: 2}
+  - decision: {fileID: 11400000, guid: 88de152b1e19c8949b7930d3d72bf91c, type: 2}
+    trueState: {fileID: 11400000, guid: dabafd4438f1f274ca21da5197b17b82, type: 2}
     falseState: {fileID: 11400000, guid: 9175174b4856f954e9c71e6a69d496e7, type: 2}
   sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

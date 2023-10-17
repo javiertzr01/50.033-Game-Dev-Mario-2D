@@ -44,7 +44,6 @@ public class PlayerMovementWeek5 : MonoBehaviour
         upSpeed = gameConstants.upSpeed;
         deathImpulse = gameConstants.deathImpulse;
         faceRightState.value = true;
-        isInvincible.value = false;
         spawnLocation = gameConstants.spawnLocations[int.Parse(SceneManager.GetActiveScene().name.Substring(SceneManager.GetActiveScene().name.Length-1)) - 1];
 
         Application.targetFrameRate = 30;

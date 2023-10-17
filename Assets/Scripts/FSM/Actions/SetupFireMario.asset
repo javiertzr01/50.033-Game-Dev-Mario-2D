@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SetupFireMario
   m_EditorClassIdentifier: 
   animatorController: {fileID: 9100000, guid: 0afdaf33e539e6146a4a87ca4eb9abec, type: 2}
+  animationAudio: {fileID: 8300000, guid: cdc43de50f4574c75afcc7e74975b29a, type: 3}

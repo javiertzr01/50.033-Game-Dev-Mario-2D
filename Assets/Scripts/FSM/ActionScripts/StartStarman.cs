@@ -5,15 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "PluggableSM/Actions/StartStarman")]
 public class StartStarman : Action
 {
-    // public RuntimeAnimatorController animatorController;
     public BoolVariable isInvincible;
+    public AudioClip invincibleAudio;
 
     public override void Act(StateController controller)
     {
-        // Change the animator
         // controller.gameObject.GetComponent<Animator>().runtimeAnimatorController = animatorController;
-
-        // Play sound
+        BuffStateController b = (BuffStateController) controller;
+        b.Rainbow();
+        b.gameObject.GetComponent<AudioSource>().PlayOneShot(invincibleAudio);
 
         // Behaviour that makes mario invincible
         isInvincible.value = true;

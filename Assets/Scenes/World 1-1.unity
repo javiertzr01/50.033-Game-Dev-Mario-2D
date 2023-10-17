@@ -2471,6 +2471,8 @@ MonoBehaviour:
   stateTimeElapsed: 0
   currentPowerupType: -1
   nextState: -1
+  spriteRenderer: {fileID: 0}
+  colors: []
 --- !u!1 &958323362
 GameObject:
   m_ObjectHideFlags: 0

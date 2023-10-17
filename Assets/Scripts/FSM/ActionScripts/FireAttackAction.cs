@@ -11,6 +11,7 @@ public class FireAttackAction : Action
     public float degree = 45;
     public GameObject attackPrefab;
     public BoolVariable marioFaceRight; // A scriptable object updated by PlayerMovement / PlayerController to store current Mario's facing
+    public AudioClip fireAudio;
 
     public override void Act(StateController controller)
     {
@@ -18,7 +19,7 @@ public class FireAttackAction : Action
         if (instantiatedPrefabsInScene.Length < maxPrefabInScene)
         {
             // Instantiate it where controller (Mario) is
-            Debug.Log(controller.transform.parent.name);
+            // Debug.Log(controller.transform.parent.name);
             GameObject x = Instantiate(attackPrefab, controller.transform.parent.transform.position, Quaternion.identity);
 
             // Get the Rigidbody of the instantiated object

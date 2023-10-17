@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SetupSuperMario
   m_EditorClassIdentifier: 
   animatorController: {fileID: 9100000, guid: 120cec32d54de314e91ef47c43caf14c, type: 2}
+  animationAudio: {fileID: 8300000, guid: 26301d2e86e99420599e315297a825df, type: 3}
