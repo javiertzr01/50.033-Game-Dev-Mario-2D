@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuffStateController : StateController
 {
+    public PowerupType currentPowerupType = PowerupType.Default;
     public BuffState nextState = BuffState.Default;
 
     // Start is called before the first frame update
@@ -12,15 +13,10 @@ public class BuffStateController : StateController
         base.Start();
         GameRestart();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     public void GameRestart()
     {
+        currentPowerupType = PowerupType.Default;   // Clear Powerup
         TransitionToState(startState);
     }
 }

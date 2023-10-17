@@ -16,5 +16,5 @@
         "**/ProjectSettings": true,
         "**/Temp": true
     },
-    "dotnet.defaultSolution": "Mario2D.sln"
+    "dotnet.defaultSolution": "50.033-Game-Dev-Mario-2D.sln"
 }

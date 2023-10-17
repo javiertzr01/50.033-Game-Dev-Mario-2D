@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableSM/Decisions/TransformMario")]
-public class TransformDecision : Decision
+[CreateAssetMenu(menuName = "PluggableSM/Decisions/TransformBuff")]
+public class TransformBuffDecision : Decision
 {
     [System.Serializable]
     public struct StateTransformMap
     {
-        public MarioState fromState;
+        public BuffState fromState;
         public PowerupType powerupCollected;
     }
 
@@ -16,13 +16,13 @@ public class TransformDecision : Decision
 
     public override bool Decide(StateController controller)
     {
-        MarioStateController m = (MarioStateController) controller;
+        BuffStateController b = (BuffStateController) controller;
 
-        MarioState toCompareState = EnumExtension.ParseEnum<MarioState>(m.currentState.name);
+        BuffState toCompareState = EnumExtension.ParseEnum<BuffState>(b.currentState.name);
 
         for (int i = 0; i < map.Length; i++)
         {
-            if (toCompareState == map[i].fromState && m.currentPowerupType == map[i].powerupCollected)
+            if (toCompareState == map[i].fromState && b.currentPowerupType == map[i].powerupCollected)
             {
                 return true;
             }
